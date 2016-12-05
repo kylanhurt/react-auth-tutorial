@@ -11,7 +11,10 @@ export default {
       request
         .get(url)
         .end((err, response) => {
-          if (err) reject(err);
+          if (err) {
+            console.log('error:', err, 'response:', response);
+            reject(err);
+          }
           resolve(JSON.parse(response.text));
         })
     });
@@ -23,7 +26,10 @@ export default {
         .get(url)
         .set('Authorization', 'Bearer ' + AuthStore.getJwt())
         .end((err, response) => {
-          if (err) reject(err);
+          if (err) {
+            console.log('error:', err, 'response:', response);
+            reject(err);
+          }
           resolve(JSON.parse(response.text));
         })
     });
